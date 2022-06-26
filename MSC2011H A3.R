@@ -1,7 +1,7 @@
 # MSC2011H A3
 # Ning Xu
 
-setwd("/Users/dannima/Desktop/MBiotech/MSC2011/Exercise/A3_Selena_NX")
+setwd("/Users/ningxu/Downloads/UTM/UTM Summer 2022/MSC2011H/MSC2011H Assignments/DHT-MSC2011H-Assignments/DHT-MSC2011H-Assignments")
 #' Prepare a dictionary of words to choose from and save it in a txt file (one column) (the file is called "my_dictionary.txt", and the words are separated by a return)
 #' Read the word list from your program.
 
@@ -62,8 +62,6 @@ print(paste("The number of wrong guesses allowed is", mistakes))
 secret_word <- choose_word(word_list)
 secret_char <- strsplit(secret_word, "")
 indices <- c()
-clue <- rep("_", nchar(secret_word)) # Edit made by Danni: set up visual clue by replicating "_" to the length of the secret_word.
-
 while (mistakes > 0) {
   user_input <- ask_input()
   if(sum(grepl(user_input, secret_char[[1]], ignore.case = T)) > 0) { #check to see if user_input is in the secret word
@@ -74,12 +72,6 @@ while (mistakes > 0) {
     }
     secret_char[[1]] <- secret_char[[1]][indices]  #if user_input is in the secret word, I will remove the letter(s) from the secret word
     indices <- c()
-    
-    # Edit made by Danni: Update & display the visual clue
-    ind <- unlist(gregexpr(user_input, secret_word)) # DM: collect the index/indices of the correctly guess letter
-    clue <- replace(clue, ind, user_input) # DM: replace "_" with correctly guessed letter at the corresponding indices
-    cat(clue, sep = " ") # DM: concatenate the clue for display
-    
     if(length(secret_char[[1]]) == 0) { #the user has guessed all letters correctly
       mistakes <- -1 #so that we can exit the while loop
       # If user has guessed the whole word correctly, notify user that they’ve won. Reveal secret and exit.
@@ -95,16 +87,5 @@ while (mistakes > 0) {
 }
 #' If tries are exhausted, notify user that they’ve lost. Reveal secret and exit.
 if(mistakes == 0) {
-  print(paste0("Sorry, you have lost. The secret word is: ", secret_word, ". Exiting game..."))
-  #' Edit made by Danni: When using the paste function, there is an extra space after the secret_word. 
-  #' Suggestion would be to use paste0 and add in an extra space after "The secret word is:".
+  print(paste("Sorry, you have lost. The secret word is:", secret_word, ". Exiting game..."))
 }
-
-#' Comment by Danni: Hi Selena! Your code followed a consistent and organized 
-#' structure with detailed comments. I really like how you created helper functions 
-#' for reading the txt file and generating the random word. After running the 
-#' code, the code worked as anticipated with no error messages. In terms of the
-#' functionality of the game, I think it would be really helpful to provide the 
-#' users with some visual cues, so the users are aware of the number of characters 
-#' correctly guessed. I added some lines of how I made my visual clue with few
-#' comments on the side. Other than that, great work overall!
