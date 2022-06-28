@@ -36,7 +36,7 @@ final_solution <- final_solution %>%
   filter(duration..seconds. <= 1432.5) %>%
   mutate(duration..seconds. = sprintf("%1.2f", duration..seconds.)) # Some numbers are in the decimal format with 2 decimal places while others are in the integer format with no decimal place. I will apply sprintf("%1.2f", x) to change all numbers to the decimal format with 2 decimal places.
  
-# Create a histogram using the duration(seconds) column, I used log because otherwise the histogram is very skewed
-hist(log(as.numeric(final_solution$duration..seconds.)), main= "Histogram of Duration of UFO Sighting",xlab = "Log(Duration(seconds))",ylab="Frequency", xlim = c(-4, 8), ylim = c(0, 3000))
+# Create a histogram using the duration(seconds) column, I used log10 because otherwise the histogram is very skewed
+hist(log10(as.numeric(final_solution$duration..seconds.)), main= "Histogram of Duration of UFO Sighting",xlab = "Log10(Duration(seconds))",ylab="Frequency", xlim = c(-2, 4), ylim = c(0, 8000))
 
                                                                                                                                                       
