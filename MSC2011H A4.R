@@ -40,5 +40,5 @@ final_solution <- final_solution %>%
 # Create a histogram using the duration(seconds) column, I used log10 because otherwise the histogram is very skewed
 hist(log10(as.numeric(final_solution$duration..seconds.)), main= "Histogram of Duration of UFO Sighting",xlab = "Log10(Duration(seconds))",ylab="Frequency", xlim = c(-2, 4), ylim = c(0, 8000))
 
-#All codes work as supposed to 
+#All codes work as they should
                                                                                                                                                       
